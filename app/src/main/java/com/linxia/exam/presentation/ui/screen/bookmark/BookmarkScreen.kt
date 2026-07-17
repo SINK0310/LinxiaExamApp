@@ -1,8 +1,11 @@
-package com.linxia.exam.presentation.ui.screen.collection
+package com.linxia.exam.presentation.ui.screen.bookmark
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -10,23 +13,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.linxia.exam.data.db.entity.Collection
+import com.linxia.exam.data.db.entity.Bookmark
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
-import com.linxia.exam.presentation.viewmodel.CollectionViewModel
+import com.linxia.exam.presentation.viewmodel.BookmarkViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @AndroidEntryPoint
 @Composable
-fun CollectionScreen(
+fun BookmarkScreen(
     modifier: Modifier = Modifier,
-    onQuestionClick: (Collection) -> Unit
+    onNavigateToPractice: (Long) -> Unit = {},
+    onNavigateToQuestion: (Long) -> Unit = {}
 ) {
-    val viewModel: CollectionViewModel = viewModel()
+    val viewModel: BookmarkViewModel = viewModel()
 
     val filterCategory by viewModel.filterCategory
-    val collectionsWithDetail by viewModel.collectionsWithDetail
-    val collectionCount by viewModel.collectionCount
+    val bookmarksWithDetail by viewModel.bookmarksWithDetail
+    val bookmarkCount by viewModel.bookmarkCount
 
     LinxiaTheme {
         Scaffold(
@@ -42,17 +46,15 @@ fun CollectionScreen(
                     .padding(paddingValues),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // 统计卡片
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        StatItem("收藏题目", collectionCount)
+                        StatItem("收藏题目", bookmarkCount)
                     }
                 }
 
-                // 分类筛选
                 SingleLineScrollRow(modifier = Modifier.padding(horizontal = 16.dp)) {
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         FilterChip(
@@ -60,12 +62,10 @@ fun CollectionScreen(
                             onClick = { viewModel.setFilterCategory(0L) },
                             label = { Text("全部") }
                         )
-                        // TODO: 添加分类筛选
                     }
                 }
 
-                // 收藏列表
-                if (collectionsWithDetail.isEmpty()) {
+                if (bookmarksWithDetail.isEmpty()) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
@@ -85,13 +85,13 @@ fun CollectionScreen(
                         contentPadding = PaddingValues(16.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        items(collectionsWithDetail) { item ->
-                            CollectionCard(
-                                collection = item.collection,
+                        items(bookmarksWithDetail) { item ->
+                            BookmarkCard(
+                                bookmark = item.bookmark,
                                 question = item.question,
                                 category = item.category,
-                                onClick = { onQuestionClick(item.collection) },
-                                onRemove = { viewModel.removeCollection(item.collection.questionId) }
+                                onClick = { onNavigateToQuestion(item.bookmark.questionId) },
+                                onRemove = { viewModel.removeBookmark(item.bookmark.questionId) }
                             )
                         }
                     }
@@ -102,8 +102,8 @@ fun CollectionScreen(
 }
 
 @Composable
-fun CollectionCard(
-    collection: Collection,
+fun BookmarkCard(
+    bookmark: Bookmark,
     question: com.linxia.exam.data.db.entity.Question?,
     category: com.linxia.exam.data.db.entity.Category?,
     onClick: () -> Unit,
@@ -147,14 +147,14 @@ fun CollectionCard(
                     maxLines = 2,
                     overflow = androidx.compose.ui.text.overflow.TextOverflow.Ellipsis
                 )
-                if (collection.note.isNotBlank()) {
+                if (bookmark.note.isNotBlank()) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)
                     ) {
                         Text(
-                            text = "笔记: ${collection.note}",
+                            text = "笔记: ${bookmark.note}",
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onSecondaryContainer,
                             modifier = Modifier.padding(12.dp)

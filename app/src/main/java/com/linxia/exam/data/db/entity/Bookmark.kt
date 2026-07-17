@@ -1,13 +1,13 @@
 package com.linxia.exam.data.db.entity
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import androidx.room.ColumnInfo
-import androidx.room.Index
+import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
+import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "collections",
+    tableName = "bookmarks",
     indices = [
         Index(value = ["question_id"]),
         Index(value = ["category_id"]),
@@ -28,7 +28,7 @@ import androidx.room.ForeignKey
         )
     ]
 )
-data class Collection(
+data class Bookmark(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     @ColumnInfo(name = "user_id") var userId: Long = 1,
     @ColumnInfo(name = "question_id") var questionId: Long = 0,

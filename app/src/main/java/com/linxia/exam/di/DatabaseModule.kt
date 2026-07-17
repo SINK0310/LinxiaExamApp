@@ -4,7 +4,7 @@ import androidx.room.Room
 import com.linxia.exam.data.db.AppDatabase
 import com.linxia.exam.data.db.dao.*
 import com.linxia.exam.data.repository.CategoryRepositoryImpl
-import com.linxia.exam.data.repository.CollectionRepositoryImpl
+import com.linxia.exam.data.repository.BookmarkRepositoryImpl
 import com.linxia.exam.data.repository.ExamRecordRepositoryImpl
 import com.linxia.exam.data.repository.OfflineCacheRepositoryImpl
 import com.linxia.exam.data.repository.PracticeRecordRepositoryImpl
@@ -14,7 +14,7 @@ import com.linxia.exam.data.repository.UserProgressRepositoryImpl
 import com.linxia.exam.data.repository.UserSettingsRepositoryImpl
 import com.linxia.exam.data.repository.WrongQuestionRepositoryImpl
 import com.linxia.exam.domain.repository.CategoryRepository
-import com.linxia.exam.domain.repository.CollectionRepository
+import com.linxia.exam.domain.repository.BookmarkRepository
 import com.linxia.exam.domain.repository.ExamRecordRepository
 import com.linxia.exam.domain.repository.OfflineCacheRepository
 import com.linxia.exam.domain.repository.PracticeRecordRepository
@@ -58,7 +58,7 @@ object DatabaseModule {
     fun provideWrongQuestionDao(db: AppDatabase): WrongQuestionDao = db.wrongQuestionDao()
 
     @Provides
-    fun provideCollectionDao(db: AppDatabase): CollectionDao = db.collectionDao()
+    fun provideBookmarkDao(db: AppDatabase): BookmarkDao = db.bookmarkDao()
 
     @Provides
     fun provideOfflineCacheDao(db: AppDatabase): OfflineCacheDao = db.offlineCacheDao()
@@ -105,7 +105,7 @@ object RepositoryModule {
     fun provideWrongQuestionRepository(impl: WrongQuestionRepositoryImpl): WrongQuestionRepository = impl
 
     @Provides
-    fun provideCollectionRepository(impl: CollectionRepositoryImpl): CollectionRepository = impl
+    fun provideBookmarkRepository(impl: BookmarkRepositoryImpl): BookmarkRepository = impl
 
     @Provides
     fun provideOfflineCacheRepository(impl: OfflineCacheRepositoryImpl): OfflineCacheRepository = impl

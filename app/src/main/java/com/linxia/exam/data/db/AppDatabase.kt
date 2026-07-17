@@ -16,7 +16,7 @@ import com.linxia.exam.data.db.entity.*
         PracticeRecord::class,
         ExamRecord::class,
         WrongQuestion::class,
-        Collection::class,
+        Bookmark::class,
         OfflineCache::class,
         UserSettings::class,
         QuestionBankVersion::class,
@@ -36,7 +36,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun practiceRecordDao(): PracticeRecordDao
     abstract fun examRecordDao(): ExamRecordDao
     abstract fun wrongQuestionDao(): WrongQuestionDao
-    abstract fun collectionDao(): CollectionDao
+    abstract fun bookmarkDao(): BookmarkDao
     abstract fun offlineCacheDao(): OfflineCacheDao
     abstract fun userSettingsDao(): UserSettingsDao
     abstract fun questionBankVersionDao(): QuestionBankVersionDao

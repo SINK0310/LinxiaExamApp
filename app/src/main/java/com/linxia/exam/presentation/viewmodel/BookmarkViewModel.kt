@@ -2,62 +2,61 @@ package com.linxia.exam.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.linxia.exam.data.db.entity.Collection
-import com.linxia.exam.domain.repository.CollectionRepository
+import com.linxia.exam.data.db.entity.Bookmark
+import com.linxia.exam.domain.repository.BookmarkRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
-class CollectionViewModel @Inject constructor(
-    private val collectionRepository: CollectionRepository
+class BookmarkViewModel @Inject constructor(
+    private val bookmarkRepository: BookmarkRepository
 ) : ViewModel() {
 
     private val _filterCategory = MutableStateFlow<Long>(0)
     val filterCategory = _filterCategory
 
-    val allCollections: Flow<List<Collection>> = collectionRepository.getAll(1L)
+    val allBookmarks: Flow<List<Bookmark>> = bookmarkRepository.getAll(1L)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val collectionsWithDetail: Flow<List<CollectionRepository.CollectionWithDetail>> = collectionRepository.getAllWithDetail(1L)
+    val bookmarksWithDetail: Flow<List<BookmarkRepository.BookmarkWithDetail>> = bookmarkRepository.getAllWithDetail(1L)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val collectionCount: Flow<Int> = flow { emit(collectionRepository.getCount(1L)) }
+    val bookmarkCount: Flow<Int> = flow { emit(bookmarkRepository.getCount(1L)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
     fun setFilterCategory(categoryId: Long) {
         _filterCategory.value = categoryId
     }
 
-    suspend fun toggleCollection(questionId: Long, categoryId: Long, note: String = "") {
-        val existing = collectionRepository.getByQuestion(1L, questionId)
+    suspend fun toggleBookmark(questionId: Long, categoryId: Long, note: String = "") {
+        val existing = bookmarkRepository.getByQuestion(1L, questionId)
         if (existing != null) {
-            collectionRepository.deleteByQuestion(1L, questionId)
+            bookmarkRepository.deleteByQuestion(1L, questionId)
         } else {
-            val collection = Collection(
+            val bookmark = Bookmark(
                 userId = 1,
                 questionId = questionId,
                 categoryId = categoryId,
                 collectTime = System.currentTimeMillis(),
                 note = note
             )
-            collectionRepository.insert(collection)
+            bookmarkRepository.insert(bookmark)
         }
     }
 
-    suspend fun updateNote(collectionId: Long, note: String) {
+    suspend fun updateNote(bookmarkId: Long, note: String) {
     }
 
-    suspend fun removeCollection(questionId: Long) {
-        collectionRepository.deleteByQuestion(1L, questionId)
+    suspend fun removeBookmark(questionId: Long) {
+        bookmarkRepository.deleteByQuestion(1L, questionId)
     }
 
-    suspend fun clearAllCollections() {
-        collectionRepository.clearAll(1L)
+    suspend fun clearAllBookmarks() {
+        bookmarkRepository.clearAll(1L)
     }
 }

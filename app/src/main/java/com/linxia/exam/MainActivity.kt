@@ -14,7 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.linxia.exam.presentation.ui.screen.category.CategoryScreen
-import com.linxia.exam.presentation.ui.screen.collection.CollectionScreen
+import com.linxia.exam.presentation.ui.screen.bookmark.BookmarkScreen
 import com.linxia.exam.presentation.ui.screen.exam.ExamScreen
 import com.linxia.exam.presentation.ui.screen.home.HomeScreen
 import com.linxia.exam.presentation.ui.screen.practice.PracticeScreen
@@ -188,7 +188,7 @@ fun AppNavHost(
         }
 
         composable("collection") {
-            CollectionScreen(
+            BookmarkScreen(
                 modifier = androidx.compose.ui.Modifier.fillMaxSize(),
                 onNavigateToPractice = { categoryId ->
                     questionViewModel.setCategory(categoryId)
