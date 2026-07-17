@@ -18,12 +18,10 @@ import com.linxia.exam.presentation.ui.components.CategoryCard
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.CategoryViewModel
 import com.linxia.exam.presentation.viewmodel.ProgressViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavController
 import androidx.navigation.compose.rememberNavController
 
-@AndroidEntryPoint
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,

@@ -14,10 +14,8 @@ import com.linxia.exam.data.db.entity.Category
 import com.linxia.exam.presentation.ui.components.CategoryCard
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.CategoryViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-@AndroidEntryPoint
 @Composable
 fun CategoryScreen(
     modifier: Modifier = Modifier,

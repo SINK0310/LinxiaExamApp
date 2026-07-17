@@ -14,12 +14,10 @@ import com.linxia.exam.data.db.entity.ExamRecord
 import com.linxia.exam.domain.repository.CategoryRepository
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.ExamViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-@AndroidEntryPoint
 @Composable
 fun ExamScreen(
     modifier: Modifier = Modifier,

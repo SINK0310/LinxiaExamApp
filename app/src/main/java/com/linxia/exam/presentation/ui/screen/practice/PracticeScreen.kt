@@ -14,10 +14,8 @@ import com.linxia.exam.data.db.entity.Question
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.PracticeViewModel
 import com.linxia.exam.presentation.viewmodel.QuestionViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-@AndroidEntryPoint
 @Composable
 fun PracticeScreen(
     modifier: Modifier = Modifier,

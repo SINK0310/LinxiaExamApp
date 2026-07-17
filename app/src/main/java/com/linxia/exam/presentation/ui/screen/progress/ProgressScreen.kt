@@ -14,10 +14,8 @@ import com.linxia.exam.data.db.entity.PracticeRecord
 import com.linxia.exam.data.db.entity.UserProgress
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.ProgressViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-@AndroidEntryPoint
 @Composable
 fun ProgressScreen(modifier: Modifier = Modifier) {
     val viewModel: ProgressViewModel = viewModel()

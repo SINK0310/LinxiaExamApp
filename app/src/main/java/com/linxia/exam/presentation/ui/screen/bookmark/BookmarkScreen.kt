@@ -16,10 +16,8 @@ import androidx.compose.ui.unit.sp
 import com.linxia.exam.data.db.entity.Bookmark
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.BookmarkViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-@AndroidEntryPoint
 @Composable
 fun BookmarkScreen(
     modifier: Modifier = Modifier,

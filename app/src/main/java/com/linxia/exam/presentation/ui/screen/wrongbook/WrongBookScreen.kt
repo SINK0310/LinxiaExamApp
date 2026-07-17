@@ -14,10 +14,8 @@ import com.linxia.exam.data.db.entity.WrongQuestion
 import com.linxia.exam.domain.repository.WrongQuestionRepository
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.WrongBookViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-@AndroidEntryPoint
 @Composable
 fun WrongBookScreen(
     modifier: Modifier = Modifier,
