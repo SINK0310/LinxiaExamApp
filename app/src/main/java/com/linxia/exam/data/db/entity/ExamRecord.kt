@@ -20,7 +20,7 @@ data class ExamRecord(
     @ColumnInfo(name = "total_questions") var totalQuestions: Int = 0,
     @ColumnInfo(name = "correct_count") var correctCount: Int = 0,
     @ColumnInfo(name = "wrong_count") var wrongCount: Int = 0,
-    var score: Double = 0.0,
+    @ColumnInfo(name = "score") var score: Double = 0.0,
     @ColumnInfo(name = "time_spent") var timeSpent: Int = 0,
     @ColumnInfo(name = "start_time") var startTime: Long = 0,
     @ColumnInfo(name = "end_time") var endTime: Long = 0,

@@ -2,89 +2,88 @@ package com.linxia.exam.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.linxia.exam.data.db.entity.PracticeRecord
 import com.linxia.exam.data.db.entity.UserProgress
+import com.linxia.exam.domain.repository.ExamRecordRepository
+import com.linxia.exam.domain.repository.PracticeRecordRepository
 import com.linxia.exam.domain.repository.UserProgressRepository
-import com.linxia.exam.domain.repository.PracticeRepository
-import com.linxia.exam.domain.repository.ExamRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
 class ProgressViewModel @Inject constructor(
     private val progressRepository: UserProgressRepository,
-    private val practiceRepository: PracticeRepository,
-    private val examRepository: ExamRepository
+    private val practiceRepository: PracticeRecordRepository,
+    private val examRepository: ExamRecordRepository
 ) : ViewModel() {
 
     private val _timeRange = MutableStateFlow<TimeRange>(TimeRange.ALL)
     val timeRange = _timeRange
 
-    val allProgress: Flow<List<UserProgress>> = progressRepository.observeProgress(1L)
+    val allProgress: Flow<List<UserProgress>> = progressRepository.getAllByUser(1L)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val progressWithCategory: Flow<List<UserProgressRepository.ProgressWithCategory>> = progressRepository.observeProgressWithCategory(1L)
+    val progressWithCategory: Flow<List<UserProgressRepository.ProgressWithCategory>> = progressRepository.getProgressWithCategory(1L)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val totalPracticed: Flow<Int> = progressRepository.getTotalPracticed(1L)
+    val totalPracticed: Flow<Int> = flow { emit(progressRepository.getTotalPracticed(1L)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
-    val totalCorrect: Flow<Int> = progressRepository.getTotalCorrect(1L)
+    val totalCorrect: Flow<Int> = flow { emit(progressRepository.getTotalCorrect(1L)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
-    val totalWrong: Flow<Int> = progressRepository.getTotalWrong(1L)
+    val totalWrong: Flow<Int> = flow { emit(progressRepository.getTotalWrong(1L)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
-    val practicedCategoriesCount: Flow<Int> = progressRepository.getPracticedCategoriesCount(1L)
+    val practicedCategoriesCount: Flow<Int> = flow { emit(progressRepository.getPracticedCategoriesCount(1L)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
-    val recentRecords: Flow<List<com.linxia.exam.data.db.entity.PracticeRecord>> = practiceRepository.getRecentRecords(1L, 20)
+    val recentRecords: Flow<List<PracticeRecord>> = practiceRepository.getRecentRecords(1L, 20)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val recentExams: Flow<List<com.linxia.exam.data.db.entity.ExamRecord>> = examRepository.getRecentExams(1L, 10)
+    val chapterPracticeCount: Flow<Int> = flow { emit(practiceRepository.getCountByMode(1L, 1)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val chapterCorrectCount: Flow<Int> = flow { emit(practiceRepository.getCorrectCountByMode(1L, 1)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val examPracticeCount: Flow<Int> = flow { emit(practiceRepository.getCountByMode(1L, 2)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val examCorrectCount: Flow<Int> = flow { emit(practiceRepository.getCorrectCountByMode(1L, 2)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val wrongReviewCount: Flow<Int> = flow { emit(practiceRepository.getCountByMode(1L, 3)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val wrongReviewCorrectCount: Flow<Int> = flow { emit(practiceRepository.getCorrectCountByMode(1L, 3)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val collectionPracticeCount: Flow<Int> = flow { emit(practiceRepository.getCountByMode(1L, 4)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val collectionCorrectCount: Flow<Int> = flow { emit(practiceRepository.getCorrectCountByMode(1L, 4)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
+
+    val mostWrongQuestions: Flow<List<PracticeRecordRepository.WrongQuestionStat>> = flow { emit(practiceRepository.getMostWrongQuestions(1L, 10)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val averageScore: Flow<Double> = examRepository.getAverageScore(1L)
+    val recentExams: Flow<List<com.linxia.exam.data.db.entity.ExamRecord>> = flow { emit(examRepository.getRecentExams(1L, 10)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+    val averageScore: Flow<Double> = flow { emit(examRepository.getAverageScore(1L) ?: 0.0) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0.0)
 
-    val highestScore: Flow<Double> = examRepository.getHighestScore(1L)
+    val highestScore: Flow<Double> = flow { emit(examRepository.getHighestScore(1L) ?: 0.0) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0.0)
 
-    val examCount: Flow<Int> = examRepository.getExamCount(1L)
+    val examCount: Flow<Int> = flow { emit(examRepository.getExamCount(1L)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val chapterPracticeCount: Flow<Int> = practiceRepository.getCountByMode(1L, 1)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val chapterCorrectCount: Flow<Int> = practiceRepository.getCorrectCountByMode(1L, 1)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val examPracticeCount: Flow<Int> = practiceRepository.getCountByMode(1L, 2)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val examCorrectCount: Flow<Int> = practiceRepository.getCorrectCountByMode(1L, 2)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val wrongReviewCount: Flow<Int> = practiceRepository.getCountByMode(1L, 3)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val wrongReviewCorrectCount: Flow<Int> = practiceRepository.getCorrectCountByMode(1L, 3)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val collectionPracticeCount: Flow<Int> = practiceRepository.getCountByMode(1L, 4)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val collectionCorrectCount: Flow<Int> = practiceRepository.getCorrectCountByMode(1L, 4)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
-
-    val mostWrongQuestions: Flow<List<PracticeRepository.WrongQuestionStat>> = practiceRepository.getMostWrongQuestions(1L, 10)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     fun setTimeRange(range: TimeRange) {
         _timeRange.value = range

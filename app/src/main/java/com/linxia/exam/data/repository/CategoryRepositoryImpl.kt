@@ -4,6 +4,7 @@ import com.linxia.exam.data.db.dao.CategoryDao
 import com.linxia.exam.data.db.entity.Category
 import com.linxia.exam.domain.repository.CategoryRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -54,7 +55,7 @@ class CategoryRepositoryImpl @Inject constructor(
     }
 
     override fun searchCategories(keyword: String): Flow<List<Category>> {
-        return categoryDao.search(keyword).asFlow()
+        return flow { emit(categoryDao.search(keyword)) }
     }
 
     override suspend fun getChildrenCount(parentId: Long): Int {
@@ -70,19 +71,26 @@ class CategoryRepositoryImpl @Inject constructor(
     }
 
     override fun getCategoryTree(): Flow<List<CategoryWithChildren>> {
-        return categoryDao.getCategoryTree().map { list ->
-            list.map { convertToTreeNode(it) }
+        return categoryDao.getAllCategories().map { all ->
+            all.filter { it.parentId == 0L }.map { root ->
+                buildSubTree(root, all)
+            }
         }
     }
 
     override suspend fun getCategoryTreeSync(): List<CategoryWithChildren> {
-        return categoryDao.getCategoryTreeSync().map { convertToTreeNode(it) }
+        val all = categoryDao.getAllCategoriesSync()
+        return all.filter { it.parentId == 0L }.map { root ->
+            buildSubTree(root, all)
+        }
     }
 
-    private fun convertToTreeNode(node: CategoryDao.CategoryWithChildren): CategoryWithChildren {
+    private fun buildSubTree(category: Category, allCategories: List<Category>): CategoryWithChildren {
         return CategoryWithChildren(
-            category = node.category,
-            children = node.children.map { convertToTreeNode(it) }
+            category = category,
+            children = allCategories
+                .filter { it.parentId == category.id }
+                .map { buildSubTree(it, allCategories) }
         )
     }
 }

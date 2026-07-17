@@ -45,7 +45,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
-        freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
+        freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
     }
 
     buildFeatures {
@@ -68,6 +68,7 @@ android {
 
 dependencies {
     // Core Android
+    implementation("com.google.android.material:material:1.12.0")
     val core_ktx_version = "1.13.1"
     val activity_compose_version = "1.9.0"
     val lifecycle_version = "2.7.0"

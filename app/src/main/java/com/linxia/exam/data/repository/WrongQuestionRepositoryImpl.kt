@@ -2,9 +2,14 @@ package com.linxia.exam.data.repository
 
 import com.linxia.exam.data.db.dao.WrongQuestionDao
 import com.linxia.exam.data.db.entity.WrongQuestion
+import com.linxia.exam.domain.repository.WrongQuestionRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class WrongQuestionRepositoryImpl(
+@Singleton
+class WrongQuestionRepositoryImpl @Inject constructor(
     private val wrongQuestionDao: WrongQuestionDao
 ) : WrongQuestionRepository {
     override suspend fun insert(wrongQuestion: WrongQuestion): Long {
@@ -59,7 +64,15 @@ class WrongQuestionRepositoryImpl(
         wrongQuestionDao.clearAll(userId)
     }
 
-    override fun getAllWithDetail(userId: Long): Flow<List<WrongQuestionDao.WrongQuestionWithDetail>> {
-        return wrongQuestionDao.getAllWithDetail(userId)
+    override fun getAllWithDetail(userId: Long): Flow<List<WrongQuestionRepository.WrongQuestionWithDetail>> {
+        return wrongQuestionDao.getAllWithDetail(userId).map { list ->
+            list.map { daoDetail ->
+                WrongQuestionRepository.WrongQuestionWithDetail(
+                    wrongQuestion = daoDetail.wrongQuestion,
+                    question = daoDetail.question,
+                    category = daoDetail.category
+                )
+            }
+        }
     }
 }

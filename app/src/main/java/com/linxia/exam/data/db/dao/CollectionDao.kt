@@ -1,9 +1,11 @@
 package com.linxia.exam.data.db.dao
 
 import androidx.room.Dao
+import androidx.room.Embedded
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Relation
 import androidx.room.Transaction
 import com.linxia.exam.data.db.entity.Collection
 import kotlinx.coroutines.flow.Flow

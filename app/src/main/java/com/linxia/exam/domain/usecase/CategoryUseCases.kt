@@ -8,12 +8,12 @@ import javax.inject.Inject
 class GetCategoryTreeUseCase @Inject constructor(
     private val repository: CategoryRepository
 ) {
-    operator fun invoke(): Flow<List<CategoryRepository.CategoryTreeNode>> {
-        return repository.observeCategoryTree()
+    operator fun invoke(): Flow<List<CategoryRepository.CategoryWithChildren>> {
+        return repository.getCategoryTree()
     }
 
-    suspend fun getTreeSync(): List<CategoryRepository.CategoryTreeNode> {
-        return repository.getCategoryTree()
+    suspend fun getTreeSync(): List<CategoryRepository.CategoryWithChildren> {
+        return repository.getCategoryTreeSync()
     }
 }
 
@@ -21,7 +21,7 @@ class GetRootCategoriesUseCase @Inject constructor(
     private val repository: CategoryRepository
 ) {
     operator fun invoke(): Flow<List<Category>> {
-        return repository.observeRootCategories()
+        return repository.getRootCategories()
     }
 }
 
@@ -29,14 +29,14 @@ class GetChildCategoriesUseCase @Inject constructor(
     private val repository: CategoryRepository
 ) {
     operator fun invoke(parentId: Long): Flow<List<Category>> {
-        return repository.observeChildren(parentId)
+        return repository.getChildren(parentId)
     }
 }
 
 class SearchCategoriesUseCase @Inject constructor(
     private val repository: CategoryRepository
 ) {
-    operator fun invoke(keyword: String): List<Category> {
+    operator fun invoke(keyword: String): Flow<List<Category>> {
         return repository.searchCategories(keyword)
     }
 }

@@ -341,15 +341,17 @@ fun StatItem(label: String, value: String, color: Color) {
     }
 }
 
-fun ExamViewModel.ExamType.label: String = when (this) {
-    ExamViewModel.ExamType.FULL_MOCK -> "全真模拟"
-    ExamViewModel.ExamType.CHAPTER_TEST -> "章节测试"
-    ExamViewModel.ExamType.SPECIAL_TOPIC -> "专项突破"
-}
+val ExamViewModel.ExamType.label: String
+    get() = when (this) {
+        ExamViewModel.ExamType.FULL_MOCK -> "全真模拟"
+        ExamViewModel.ExamType.CHAPTER_TEST -> "章节测试"
+        ExamViewModel.ExamType.SPECIAL_TOPIC -> "专项突破"
+    }
 
-fun ExamRecord.examTypeLabel: String = when (examType) {
-    1 -> "全真模拟"
-    2 -> "章节测试"
-    3 -> "专项突破"
-    else -> "未知"
-}
+val ExamRecord.examTypeLabel: String
+    get() = when (examType) {
+        1 -> "全真模拟"
+        2 -> "章节测试"
+        3 -> "专项突破"
+        else -> "未知"
+    }

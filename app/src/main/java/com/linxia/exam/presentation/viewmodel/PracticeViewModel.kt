@@ -3,13 +3,12 @@ package com.linxia.exam.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.linxia.exam.data.db.entity.Question
-import com.linxia.exam.domain.repository.PracticeRepository
+import com.linxia.exam.domain.repository.PracticeRecordRepository
 import com.linxia.exam.domain.repository.UserProgressRepository
 import com.linxia.exam.domain.repository.WrongQuestionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.launch
@@ -18,7 +17,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
 class PracticeViewModel @Inject constructor(
-    private val practiceRepository: PracticeRepository,
+    private val practiceRepository: PracticeRecordRepository,
     private val userProgressRepository: UserProgressRepository,
     private val wrongQuestionRepository: WrongQuestionRepository
 ) : ViewModel() {
@@ -111,7 +110,6 @@ class PracticeViewModel @Inject constructor(
                 val userAnswer = answers[question.id] ?: ""
                 val isCorrect = if (userAnswer == question.correctAnswer) 1 else 0
 
-                // 保存练习记录
                 val record = com.linxia.exam.data.db.entity.PracticeRecord(
                     userId = userId,
                     questionId = question.id,
@@ -119,11 +117,10 @@ class PracticeViewModel @Inject constructor(
                     practiceMode = mode,
                     userAnswer = userAnswer,
                     isCorrect = isCorrect,
-                    timeSpent = 0 // TODO: 计算实际耗时
+                    timeSpent = 0
                 )
-                practiceRepository.insertRecord(record)
+                practiceRepository.insert(record)
 
-                // 更新错题本
                 if (isCorrect == 0) {
                     val wrongQuestion = com.linxia.exam.data.db.entity.WrongQuestion(
                         userId = userId,
@@ -134,11 +131,10 @@ class PracticeViewModel @Inject constructor(
                         lastWrongTime = System.currentTimeMillis(),
                         masteryStatus = com.linxia.exam.data.db.entity.WrongQuestion.STATUS_NOT_MASTERED
                     )
-                    wrongQuestionRepository.addWrongQuestion(wrongQuestion)
+                    wrongQuestionRepository.insert(wrongQuestion)
                 }
 
-                // 更新用户进度
-                val progress = userProgressRepository.getProgressByCategory(userId, question.categoryId) ?:
+                val progress = userProgressRepository.getByCategory(userId, question.categoryId) ?:
                     com.linxia.exam.data.db.entity.UserProgress(
                         userId = userId,
                         categoryId = question.categoryId,
@@ -152,7 +148,7 @@ class PracticeViewModel @Inject constructor(
                 if (isCorrect == 1) progress.correctCount++ else progress.wrongCount++
                 progress.lastPracticeTime = System.currentTimeMillis()
                 progress.masteryLevel = (progress.correctCount * 100 / progress.totalQuestions).coerceAtMost(100)
-                userProgressRepository.updateProgress(progress)
+                userProgressRepository.update(progress)
             }
         }
     }

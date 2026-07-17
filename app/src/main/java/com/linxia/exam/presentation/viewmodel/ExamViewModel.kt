@@ -3,10 +3,10 @@ package com.linxia.exam.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.linxia.exam.data.db.entity.ExamRecord
-import com.linxia.exam.domain.repository.ExamRepository
+import com.linxia.exam.domain.repository.ExamRecordRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
 class ExamViewModel @Inject constructor(
-    private val examRepository: ExamRepository
+    private val examRepository: ExamRecordRepository
 ) : ViewModel() {
 
     private val _examType = MutableStateFlow<ExamType>(ExamType.FULL_MOCK)
@@ -27,7 +27,7 @@ class ExamViewModel @Inject constructor(
     private val _questionCount = MutableStateFlow(100)
     val questionCount = _questionCount
 
-    private val _examDuration = MutableStateFlow(120) // 分钟
+    private val _examDuration = MutableStateFlow(120)
     val examDuration = _examDuration
 
     private val _isExamRunning = MutableStateFlow(false)
@@ -36,21 +36,19 @@ class ExamViewModel @Inject constructor(
     private val _examStartTime = MutableStateFlow<Long>(0)
     val examStartTime = _examStartTime
 
-    val allExams: Flow<List<ExamRecord>> = examRepository.getAllExams(1L)
+    val allExams: Flow<List<ExamRecord>> = examRepository.getAllByUser(1L)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val recentExams: Flow<List<ExamRecord>> = examRepository.getRecentExams(1L, 10)
+    val recentExams: Flow<List<ExamRecord>> = flow { emit(examRepository.getRecentExams(1L, 10)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val averageScore: Flow<Double> = examRepository.getAverageScore(1L)
-        .map { it ?: 0.0 }
+    val averageScore: Flow<Double> = flow { emit(examRepository.getAverageScore(1L) ?: 0.0) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0.0)
 
-    val highestScore: Flow<Double> = examRepository.getHighestScore(1L)
-        .map { it ?: 0.0 }
+    val highestScore: Flow<Double> = flow { emit(examRepository.getHighestScore(1L) ?: 0.0) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0.0)
 
-    val examCount: Flow<Int> = examRepository.getExamCount(1L)
+    val examCount: Flow<Int> = flow { emit(examRepository.getExamCount(1L)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), 0)
 
     fun setExamType(type: ExamType) {
@@ -100,7 +98,7 @@ class ExamViewModel @Inject constructor(
             questionIds = kotlinx.serialization.json.Json.encodeToString(questionIds),
             userAnswers = kotlinx.serialization.json.Json.encodeToString(userAnswers)
         )
-        examRepository.insertRecord(record)
+        examRepository.insert(record)
     }
 
     fun cancelExam() {

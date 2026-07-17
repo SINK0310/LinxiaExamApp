@@ -1,9 +1,11 @@
 package com.linxia.exam.data.db.dao
 
 import androidx.room.Dao
+import androidx.room.Embedded
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Relation
 import androidx.room.Transaction
 import com.linxia.exam.data.db.entity.PracticeRecord
 import kotlinx.coroutines.flow.Flow
@@ -46,9 +48,17 @@ interface PracticeRecordDao {
     @Query("DELETE FROM practice_records WHERE user_id = :userId AND practice_time < :beforeTime")
     suspend fun deleteBefore(userId: Long, beforeTime: Long)
 
+    @Query("SELECT question_id AS questionId, COUNT(*) AS `count` FROM practice_records WHERE user_id = :userId AND is_correct = 0 GROUP BY question_id ORDER BY `count` DESC LIMIT :limit")
+    suspend fun getMostWrongQuestions(userId: Long, limit: Int): List<WrongQuestionStat>
+
     @Transaction
     @Query("SELECT * FROM practice_records WHERE user_id = :userId ORDER BY practice_time DESC LIMIT :limit")
     fun getRecentWithDetail(userId: Long, limit: Int): Flow<List<PracticeRecordWithDetail>>
+
+    data class WrongQuestionStat(
+        var questionId: Long,
+        var count: Int
+    )
 
     data class PracticeRecordWithDetail(
         @Embedded var record: PracticeRecord,

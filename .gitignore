@@ -5,9 +5,8 @@ build/
 !**/build.gradle.kts
 !**/settings.gradle.kts
 
-# Local configuration
+# Local configuration (keep gradle.properties tracked!)
 local.properties
-*.properties
 
 # Logs
 *.log

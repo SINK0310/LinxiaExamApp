@@ -13,11 +13,11 @@ import com.linxia.exam.domain.usecase.ToggleWrongUseCase
 import com.linxia.exam.domain.usecase.GetQuestionByIdUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 
@@ -42,13 +42,13 @@ class QuestionViewModel @Inject constructor(
     private val _shuffleQuestions = MutableStateFlow(false)
     val shuffleQuestions = _shuffleQuestions
 
-    val questionsByCategory: Flow<List<Question>> = combine(_currentCategoryId) { categoryId ->
-        if (categoryId > 0) getQuestionsByCategoryUseCase(categoryId) else emptyList()
-    }.flattenMerge().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+    val questionsByCategory: Flow<List<Question>> = _currentCategoryId.flatMapLatest { categoryId ->
+        if (categoryId > 0) getQuestionsByCategoryUseCase(categoryId) else flowOf(emptyList())
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val randomQuestions: Flow<List<Question>> = combine(_currentCategoryId, _practiceMode, _shuffleQuestions) { categoryId, mode, shuffle ->
         if (categoryId > 0 && shuffle) getRandomQuestionsUseCase(categoryId, 20) else emptyList()
-    }.flattenMerge().stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val collectedQuestions: Flow<List<Question>> = getCollectedQuestionsUseCase()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())

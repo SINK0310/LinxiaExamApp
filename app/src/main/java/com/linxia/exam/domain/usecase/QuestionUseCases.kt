@@ -20,11 +20,11 @@ class GetQuestionsByCategoryUseCase @Inject constructor(
 class GetRandomQuestionsUseCase @Inject constructor(
     private val questionRepository: QuestionRepository
 ) {
-    operator fun invoke(categoryId: Long, limit: Int): List<Question> {
+    suspend operator fun invoke(categoryId: Long, limit: Int): List<Question> {
         return questionRepository.getRandomByCategory(categoryId, limit)
     }
 
-    suspend fun invoke(categoryIds: List<Long>, limit: Int): List<Question> {
+    suspend operator fun invoke(categoryIds: List<Long>, limit: Int): List<Question> {
         return questionRepository.getRandomByCategories(categoryIds, limit)
     }
 }
@@ -48,7 +48,7 @@ class GetWrongQuestionsUseCase @Inject constructor(
 class SearchQuestionsUseCase @Inject constructor(
     private val questionRepository: QuestionRepository
 ) {
-    operator fun invoke(keyword: String): List<Question> {
+    suspend operator fun invoke(keyword: String): List<Question> {
         return questionRepository.searchQuestions(keyword)
     }
 }
@@ -56,7 +56,7 @@ class SearchQuestionsUseCase @Inject constructor(
 class ToggleCollectedUseCase @Inject constructor(
     private val questionRepository: QuestionRepository
 ) {
-    operator fun invoke(questionId: Long, collected: Boolean) {
+    suspend operator fun invoke(questionId: Long, collected: Boolean) {
         questionRepository.setCollected(questionId, if (collected) 1 else 0)
     }
 }
@@ -64,7 +64,7 @@ class ToggleCollectedUseCase @Inject constructor(
 class ToggleWrongUseCase @Inject constructor(
     private val questionRepository: QuestionRepository
 ) {
-    operator fun invoke(questionId: Long, wrong: Boolean) {
+    suspend operator fun invoke(questionId: Long, wrong: Boolean) {
         questionRepository.setWrong(questionId, if (wrong) 1 else 0)
     }
 }
@@ -72,8 +72,8 @@ class ToggleWrongUseCase @Inject constructor(
 class GetQuestionByIdUseCase @Inject constructor(
     private val questionRepository: QuestionRepository
 ) {
-    operator fun invoke(id: Long): Question? {
-        return questionRepository.getQuestionById(id)
+    suspend operator fun invoke(id: Long): Question? {
+        return questionRepository.getById(id)
     }
 }
 

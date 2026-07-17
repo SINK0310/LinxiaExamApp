@@ -14,7 +14,13 @@ interface PracticeRecordRepository {
     suspend fun getCorrectCountByMode(userId: Long, mode: Int): Int
     suspend fun getByTimeRange(userId: Long, startTime: Long, endTime: Long): List<PracticeRecord>
     suspend fun clearUserRecords(userId: Long)
+    suspend fun getMostWrongQuestions(userId: Long, limit: Int): List<PracticeRecordRepository.WrongQuestionStat>
     fun getRecentWithDetail(userId: Long, limit: Int): Flow<List<PracticeRecordRepository.PracticeRecordWithDetail>>
+
+    data class WrongQuestionStat(
+        var questionId: Long,
+        var count: Int
+    )
 
     data class PracticeRecordWithDetail(
         var record: PracticeRecord,

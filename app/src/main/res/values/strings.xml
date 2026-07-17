@@ -7,7 +7,7 @@
     <string name="today_progress">今日学习进度</string>
     <string name="total_practiced">总练习</string>
     <string name="correct_count">正确</string>
-    <string name="wrong_count">错误</string>
+    <string name="wrong_count_label">错误</string>
     <string name="accuracy_rate">正确率</string>
     <string name="quick_actions">快捷入口</string>
     <string name="recommended_categories">推荐分类</string>
