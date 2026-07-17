@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors - 临夏绿 -->
+    <color name="primary">#1B5E20</color>
+    <color name="primary_container">#C8E6C9</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#1B5E20</color>
+
+    <!-- Secondary Colors - 橙色 -->
+    <color name="secondary">#E65100</color>
+    <color name="secondary_container">#FFE0B2</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_secondary_container">#E65100</color>
+
+    <!-- Tertiary Colors - 蓝色 -->
+    <color name="tertiary">#1565C0</color>
+    <color name="tertiary_container">#BBDEFB</color>
+    <color name="on_tertiary">#FFFFFF</color>
+    <color name="on_tertiary_container">#0D47A1</color>
+
+    <!-- Surface & Background -->
+    <color name="surface">#FAFAFA</color>
+    <color name="surface_variant">#F5F5F5</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="on_background">#1D1D1D</color>
+    <color name="on_surface">#1D1D1D</color>
+    <color name="on_surface_variant">#424242</color>
+
+    <!-- Error -->
+    <color name="error">#B00020</color>
+    <color name="error_container">#FCD8DF</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="on_error_container">#410002</color>
+
+    <!-- Outline -->
+    <color name="outline">#90A4AE</color>
+    <color name="outline_variant">#B0BEC5</color>
+
+    <!-- Scrim & Shadow -->
+    <color name="scrim">#000000</color>
+    <color name="shadow">#000000</color>
+
+    <!-- Inverse -->
+    <color name="inverse_surface">#2D2D2D</color>
+    <color name="inverse_on_surface">#FFFFFF</color>
+    <color name="inverse_primary">#A5D6A7</color>
+
+    <!-- Dark Theme Overrides -->
+    <color name="primary_dark">#A5D6A7</color>
+    <color name="primary_container_dark">#2E7D32</color>
+    <color name="on_primary_dark">#1B5E20</color>
+    <color name="on_primary_container_dark">#A5D6A7</color>
+
+    <color name="secondary_dark">#FFB74D</color>
+    <color name="secondary_container_dark">#BF360C</color>
+    <color name="on_secondary_dark">#BF360C</color>
+    <color name="on_secondary_container_dark">#FFB74D</color>
+
+    <color name="tertiary_dark">#64B5F6</color>
+    <color name="tertiary_container_dark">#1565C0</color>
+    <color name="on_tertiary_dark">#0D47A1</color>
+    <color name="on_tertiary_container_dark">#64B5F6</color>
+
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="surface_variant_dark">#2D2D2D</color>
+    <color name="background_dark">#121212</color>
+    <color name="on_background_dark">#FFFFFF</color>
+    <color name="on_surface_dark">#FFFFFF</color>
+    <color name="on_surface_variant_dark">#B0BEC5</color>
+
+    <color name="error_dark">#CF6679</color>
+    <color name="error_container_dark">#93000A</color>
+    <color name="on_error_dark">#000000</color>
+    <color name="on_error_container_dark">#F9B8C1</color>
+
+    <color name="outline_dark">#546E7A</color>
+    <color name="outline_variant_dark">#455A64</color>
+
+    <color name="inverse_surface_dark">#FAFAFA</color>
+    <color name="inverse_on_surface_dark">#1D1D1D</color>
+    <color name="inverse_primary_dark">#1B5E20</color>
+</resources>

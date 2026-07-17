@@ -1,0 +1,199 @@
+<resources>
+    <string name="app_name">临夏事业编刷题</string>
+    <string name="app_name_short">临夏刷题</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">临夏事业编刷题</string>
+    <string name="today_progress">今日学习进度</string>
+    <string name="total_practiced">总练习</string>
+    <string name="correct_count">正确</string>
+    <string name="wrong_count">错误</string>
+    <string name="accuracy_rate">正确率</string>
+    <string name="quick_actions">快捷入口</string>
+    <string name="recommended_categories">推荐分类</string>
+    <string name="view_all_categories">查看全部分类</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">首页</string>
+    <string name="nav_practice">练习</string>
+    <string name="nav_exam">考试</string>
+    <string name="nav_wrongbook">错题</string>
+    <string name="nav_collection">收藏</string>
+    <string name="nav_progress">进度</string>
+    <string name="nav_settings">设置</string>
+
+    <!-- Categories -->
+    <string name="category_public_basic">公共基础知识</string>
+    <string name="category_marxist">马克思主义哲学</string>
+    <string name="category_mao_thought">毛中特/邓三科</string>
+    <string name="category_party_history">党史党建</string>
+    <string name="category_current_politics">时事政治</string>
+    <string name="category_law">法律法规</string>
+    <string name="category_admin_aptitude">行政职业能力测验</string>
+    <string name="category_verbal">言语理解</string>
+    <string name="category_quantitative">数量关系</string>
+    <string name="category_judgment">判断推理</string>
+    <string name="category_data_analysis">资料分析</string>
+    <string name="category_official_doc">公文写作</string>
+    <string name="category_linxia_local">临夏州情/临夏本地知识</string>
+    <string name="category_linxia_history">临夏历史沿革</string>
+    <string name="category_linxia_geography">临夏地理气候</string>
+    <string name="category_linxia_ethnic">临夏民族宗教</string>
+    <string name="category_linxia_economy">临夏经济发展</string>
+    <string name="category_linxia_tourism">临夏旅游文化</string>
+    <string name="category_occupational_aptitude">职业能力倾向测验</string>
+    <string name="category_essay">申论</string>
+
+    <!-- Practice Screen -->
+    <string name="practice_mode_chapter">章节练习</string>
+    <string name="practice_mode_mock">模拟考试</string>
+    <string name="practice_mode_wrong">错题重做</string>
+    <string name="practice_mode_collection">收藏练习</string>
+    <string name="question_number">题目 %1$d / %2$d</string>
+    <string name="show_explanation">显示解析</string>
+    <string name="hide_explanation">隐藏解析</string>
+    <string name="correct_answer">正确答案</string>
+    <string name="analysis">解析</string>
+    <string name="your_answer">您的答案</string>
+    <string name="next_question">下一题</string>
+    <string name="prev_question">上一题</string>
+    <string name="finish_practice">结束练习</string>
+    <string name="review_wrong">复习错题</string>
+    <string name="retry_practice">重新练习</string>
+
+    <!-- Exam Screen -->
+    <string name="exam_title">模拟考试</string>
+    <string name="exam_type_full_mock">全真模拟</string>
+    <string name="exam_type_chapter">章节测试</string>
+    <string name="exam_type_special">专项突破</string>
+    <string name="exam_question_count">题目数量</string>
+    <string name="exam_duration">考试时长</string>
+    <string name="exam_categories">考试范围</string>
+    <string name="start_exam">开始考试</string>
+    <string name="exam_running">考试进行中</string>
+    <string name="submit_exam">交卷</string>
+    <string name="abandon_exam">放弃考试</string>
+    <string name="exam_finished">考试结束</string>
+    <string name="exam_score">得分</string>
+    <string name="exam_time_spent">用时</string>
+
+    <!-- Wrong Book -->
+    <string name="wrongbook_title">错题本</string>
+    <string name="wrongbook_all">全部</string>
+    <string name="wrongbook_unmastered">未掌握</string>
+    <string name="wrongbook_reviewing">复习中</string>
+    <string name="wrongbook_mastered">已掌握</string>
+    <string name="wrongbook_total">总错题</string>
+    <string name="wrongbook_mark_mastered">标记掌握</string>
+    <string name="wrongbook_mark_reviewing">标记复习中</string>
+    <string name="wrongbook_remove">移除</string>
+    <string name="wrongbook_clear_mastered">清空已掌握</string>
+    <string name="wrongbook_empty">暂无错题</string>
+    <string name="wrongbook_empty_subtitle">继续练习，错题会自动收集到这里</string>
+    <string name="wrong_count">错误 %1$d 次</string>
+
+    <!-- Collection -->
+    <string name="collection_title">收藏夹</string>
+    <string name="collection_count">收藏题目</string>
+    <string name="collection_empty">暂无收藏</string>
+    <string name="collection_empty_subtitle">做题时点击书签图标收藏</string>
+    <string name="collection_note">笔记</string>
+    <string name="collection_remove">取消收藏</string>
+
+    <!-- Progress -->
+    <string name="progress_title">学习进度</string>
+    <string name="progress_overall">总体统计</string>
+    <string name="progress_by_mode">练习模式统计</string>
+    <string name="progress_exam_stats">考试表现</string>
+    <string name="progress_category_mastery">分类掌握度</string>
+    <string name="progress_recent_practice">近期练习</string>
+    <string name="progress_recent_exams">近期考试</string>
+    <string name="progress_most_wrong">高频错题</string>
+    <string name="progress_time_range">时间范围</string>
+    <string name="progress_today">今日</string>
+    <string name="progress_week">本周</string>
+    <string name="progress_month">本月</string>
+    <string name="progress_all">全部</string>
+    <string name="progress_chapter_practice">章节练习</string>
+    <string name="progress_mock_exam">模拟考试</string>
+    <string name="progress_wrong_review">错题复习</string>
+    <string name="progress_collection_practice">收藏练习</string>
+    <string name="progress_practiced_categories">已练分类</string>
+
+    <!-- Settings -->
+    <string name="settings_title">设置</string>
+    <string name="settings_appearance">外观</string>
+    <string name="settings_night_mode">夜间模式</string>
+    <string name="settings_font_size">字体大小</string>
+    <string name="settings_practice">练习设置</string>
+    <string name="settings_auto_next">自动下一题</string>
+    <string name="settings_show_explanation">显示解析</string>
+    <string name="settings_question_order">题目顺序</string>
+    <string name="settings_order_sequential">顺序练习</string>
+    <string name="settings_order_random">随机练习</string>
+    <string name="settings_exam">考试设置</string>
+    <string name="settings_exam_duration">模拟考试时长</string>
+    <string name="settings_daily_goal">每日目标</string>
+    <string name="settings_notifications">通知与声音</string>
+    <string name="settings_daily_reminder">每日提醒</string>
+    <string name="settings_sound">音效</string>
+    <string name="settings_vibration">震动反馈</string>
+    <string name="settings_data">数据管理</string>
+    <string name="settings_offline_mode">离线模式</string>
+    <string name="settings_clear_cache">清除缓存</string>
+    <string name="settings_export_data">导出数据</string>
+    <string name="settings_import_data">导入数据</string>
+    <string name="settings_clear_all_data">清空所有数据</string>
+    <string name="settings_about">关于</string>
+    <string name="settings_version">版本</string>
+    <string name="settings_question_bank_version">题库版本</string>
+    <string name="settings_privacy_policy">隐私政策</string>
+    <string name="settings_terms_of_service">用户协议</string>
+    <string name="settings_check_update">检查更新</string>
+
+    <!-- Dialogs & Toasts -->
+    <string name="confirm_exit_practice">确定要退出练习吗？进度将会保存。</string>
+    <string name="confirm_abandon_exam">确定要放弃考试吗？</string>
+    <string name="confirm_clear_cache">确定要清除缓存吗？</string>
+    <string name="confirm_clear_all_data">确定要清空所有数据吗？此操作不可恢复。</string>
+    <string name="confirm_remove_wrong">确定要移除这道错题吗？</string>
+    <string name="confirm_remove_collection">确定要取消收藏吗？</string>
+    <string name="toast_question_collected">已收藏</string>
+    <string name="toast_question_uncollected">已取消收藏</string>
+    <string name="toast_question_marked_wrong">已标记错题</string>
+    <string name="toast_question_unmarked_wrong">已取消错题标记</string>
+    <string name="toast_wrong_marked_mastered">已标记为掌握</string>
+    <string name="toast_wrong_marked_reviewing">已标记为复习中</string>
+    <string name="toast_wrong_removed">已移除错题</string>
+    <string name="toast_collection_removed">已取消收藏</string>
+    <string name="toast_settings_saved">设置已保存</string>
+    <string name="toast_data_exported">数据导出成功</string>
+    <string name="toast_data_imported">数据导入成功</string>
+    <string name="toast_cache_cleared">缓存已清除</string>
+    <string name="toast_all_data_cleared">所有数据已清空</string>
+    <string name="toast_no_questions">暂无题目</string>
+    <string name="toast_network_error">网络错误，请检查连接</string>
+    <string name="toast_load_failed">加载失败</string>
+
+    <!-- Question Types -->
+    <string name="question_type_single">单选题</string>
+    <string name="question_type_multiple">多选题</string>
+    <string name="question_type_true_false">判断题</string>
+    <string name="question_type_short_answer">简答题</string>
+
+    <!-- Difficulty -->
+    <string name="difficulty_easy">简单</string>
+    <string name="difficulty_medium">中等</string>
+    <string name="difficulty_hard">困难</string>
+
+    <!-- Mastery Status -->
+    <string name="mastery_not_mastered">未掌握</string>
+    <string name="mastery_reviewing">复习中</string>
+    <string name="mastery_mastered">已掌握</string>
+
+    <!-- Time Format -->
+    <string name="time_format_minute">%1$d 分钟</string>
+    <string name="time_format_hour_minute">%1$d 小时 %2$d 分钟</string>
+    <string name="date_format_short">%1$tm-%1$td %1$tH:%1$tM</string>
+    <string name="date_format_long">%1$tY-%1$tm-%1$td %1$tH:%1$tM</string>
+</resources>

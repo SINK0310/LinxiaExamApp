@@ -1,0 +1,14 @@
+# 临夏事业编题库爬虫依赖
+# 安装: pip install -r requirements_crawler.txt
+
+aiohttp>=3.9.0
+asyncio
+aiofiles>=23.0.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+cssselect>=1.2.0
+requests>=2.31.0
+tenacity>=8.2.0
+tqdm>=4.66.0
+python-dateutil>=2.8.0
+PyYAML>=6.0.0

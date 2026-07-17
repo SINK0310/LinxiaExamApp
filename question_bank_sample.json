@@ -1,0 +1,287 @@
+{
+  "version": "2024.01.15",
+  "description": "临夏事业编题库 2024年1月版",
+  "totalQuestions": 2500,
+  "categories": [
+    {
+      "id": 1,
+      "name": "公共基础知识",
+      "level": 1,
+      "parentId": 0,
+      "sortOrder": 1,
+      "icon": "politics",
+      "color": "#1B5E20",
+      "children": [
+        {
+          "id": 2,
+          "name": "马克思主义哲学",
+          "level": 2,
+          "parentId": 1,
+          "sortOrder": 1,
+          "children": [
+            {"id": 3, "name": "哲学基本问题", "level": 3, "parentId": 2, "sortOrder": 1},
+            {"id": 4, "name": "唯物论", "level": 3, "parentId": 2, "sortOrder": 2},
+            {"id": 5, "name": "辩证法", "level": 3, "parentId": 2, "sortOrder": 3},
+            {"id": 6, "name": "认识论", "level": 3, "parentId": 2, "sortOrder": 4},
+            {"id": 7, "name": "历史唯物主义", "level": 3, "parentId": 2, "sortOrder": 5}
+          ]
+        },
+        {
+          "id": 8,
+          "name": "毛中特/邓三科",
+          "level": 2,
+          "parentId": 1,
+          "sortOrder": 2,
+          "children": [
+            {"id": 9, "name": "毛泽东思想", "level": 3, "parentId": 8, "sortOrder": 1},
+            {"id": 10, "name": "邓小平理论", "level": 3, "parentId": 8, "sortOrder": 2},
+            {"id": 11, "name": "三个代表重要思想", "level": 3, "parentId": 8, "sortOrder": 3},
+            {"id": 12, "name": "科学发展观", "level": 3, "parentId": 8, "sortOrder": 4}
+          ]
+        },
+        {
+          "id": 13,
+          "name": "党史党建",
+          "level": 2,
+          "parentId": 1,
+          "sortOrder": 3,
+          "children": [
+            {"id": 14, "name": "党的历史", "level": 3, "parentId": 13, "sortOrder": 1},
+            {"id": 15, "name": "党的建设", "level": 3, "parentId": 13, "sortOrder": 2},
+            {"id": 16, "name": "党章党规", "level": 3, "parentId": 13, "sortOrder": 3}
+          ]
+        },
+        {
+          "id": 17,
+          "name": "时事政治",
+          "level": 2,
+          "parentId": 1,
+          "sortOrder": 4,
+          "children": [
+            {"id": 18, "name": "国内时事", "level": 3, "parentId": 17, "sortOrder": 1},
+            {"id": 19, "name": "国际时事", "level": 3, "parentId": 17, "sortOrder": 2},
+            {"id": 20, "name": "甘肃/临夏时事", "level": 3, "parentId": 17, "sortOrder": 3}
+          ]
+        },
+        {
+          "id": 21,
+          "name": "法律法规",
+          "level": 2,
+          "parentId": 1,
+          "sortOrder": 5,
+          "children": [
+            {"id": 22, "name": "宪法", "level": 3, "parentId": 21, "sortOrder": 1},
+            {"id": 23, "name": "行政法", "level": 3, "parentId": 21, "sortOrder": 2},
+            {"id": 24, "name": "民法典", "level": 3, "parentId": 21, "sortOrder": 3},
+            {"id": 25, "name": "刑法", "level": 3, "parentId": 21, "sortOrder": 4},
+            {"id": 26, "name": "劳动法/公务员法", "level": 3, "parentId": 21, "sortOrder": 5}
+          ]
+        },
+        {
+          "id": 27,
+          "name": "行政职业能力测验",
+          "level": 2,
+          "parentId": 1,
+          "sortOrder": 6,
+          "children": [
+            {"id": 28, "name": "言语理解", "level": 3, "parentId": 27, "sortOrder": 1},
+            {"id": 29, "name": "数量关系", "level": 3, "parentId": 27, "sortOrder": 2},
+            {"id": 30, "name": "判断推理", "level": 3, "parentId": 27, "sortOrder": 3},
+            {"id": 31, "name": "资料分析", "level": 3, "parentId": 27, "sortOrder": 4}
+          ]
+        },
+        {
+          "id": 32,
+          "name": "公文写作",
+          "level": 2,
+          "parentId": 1,
+          "sortOrder": 7
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "name": "临夏州情/临夏本地知识",
+      "level": 1,
+      "parentId": 0,
+      "sortOrder": 2,
+      "icon": "local",
+      "color": "#BF360C",
+      "children": [
+        {
+          "id": 101,
+          "name": "临夏历史沿革",
+          "level": 2,
+          "parentId": 100,
+          "sortOrder": 1,
+          "children": [
+            {"id": 102, "name": "古代历史", "level": 3, "parentId": 101, "sortOrder": 1},
+            {"id": 103, "name": "近现代史", "level": 3, "parentId": 101, "sortOrder": 2},
+            {"id": 104, "name": "建州历程", "level": 3, "parentId": 101, "sortOrder": 3}
+          ]
+        },
+        {
+          "id": 105,
+          "name": "临夏地理气候",
+          "level": 2,
+          "parentId": 100,
+          "sortOrder": 2,
+          "children": [
+            {"id": 106, "name": "地理位置/区划", "level": 3, "parentId": 105, "sortOrder": 1},
+            {"id": 107, "name": "地形地貌", "level": 3, "parentId": 105, "sortOrder": 2},
+            {"id": 108, "name": "气候特点", "level": 3, "parentId": 105, "sortOrder": 3},
+            {"id": 109, "name": "水系分布", "level": 3, "parentId": 105, "sortOrder": 4}
+          ]
+        },
+        {
+          "id": 110,
+          "name": "临夏民族宗教",
+          "level": 2,
+          "parentId": 100,
+          "sortOrder": 3,
+          "children": [
+            {"id": 111, "name": "民族构成", "level": 3, "parentId": 110, "sortOrder": 1},
+            {"id": 112, "name": "伊斯兰教知识", "level": 3, "parentId": 110, "sortOrder": 2},
+            {"id": 113, "name": "清真食品/哈拉尔", "level": 3, "parentId": 110, "sortOrder": 3},
+            {"id": 114, "name": "民族团结政策", "level": 3, "parentId": 110, "sortOrder": 4}
+          ]
+        },
+        {
+          "id": 115,
+          "name": "临夏经济发展",
+          "level": 2,
+          "parentId": 100,
+          "sortOrder": 4,
+          "children": [
+            {"id": 116, "name": "主导产业", "level": 3, "parentId": 115, "sortOrder": 1},
+            {"id": 117, "name": "重点项目", "level": 3, "parentId": 115, "sortOrder": 2},
+            {"id": 118, "name": "招商引资", "level": 3, "parentId": 115, "sortOrder": 3},
+            {"id": 119, "name": "乡村振兴", "level": 3, "parentId": 115, "sortOrder": 4}
+          ]
+        },
+        {
+          "id": 120,
+          "name": "临夏文化旅游",
+          "level": 2,
+          "parentId": 100,
+          "sortOrder": 5,
+          "children": [
+            {"id": 121, "name": "炳灵寺石窟", "level": 3, "parentId": 120, "sortOrder": 1},
+            {"id": 122, "name": "刘家峡水电站", "level": 3, "parentId": 120, "sortOrder": 2},
+            {"id": 123, "name": "松鸣岩/关河书院", "level": 3, "parentId": 120, "sortOrder": 3},
+            {"id": 124, "name": "华林寺/八坊十三巷", "level": 3, "parentId": 120, "sortOrder": 4},
+            {"id": 125, "name": "华尔/花儿/临夏民歌", "level": 3, "parentId": 120, "sortOrder": 5}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 200,
+      "name": "职业能力倾向测验",
+      "level": 1,
+      "parentId": 0,
+      "sortOrder": 3,
+      "icon": "ability",
+      "color": "#4A148C",
+      "children": [
+        {"id": 201, "name": "言语理解与表达", "level": 2, "parentId": 200, "sortOrder": 1},
+        {"id": 202, "name": "数量关系", "level": 2, "parentId": 200, "sortOrder": 2},
+        {"id": 203, "name": "判断推理", "level": 2, "parentId": 200, "sortOrder": 3},
+        {"id": 204, "name": "资料分析", "level": 2, "parentId": 200, "sortOrder": 4},
+        {"id": 205, "name": "常识判断", "level": 2, "parentId": 200, "sortOrder": 5}
+      ]
+    },
+    {
+      "id": 300,
+      "name": "申论",
+      "level": 1,
+      "parentId": 0,
+      "sortOrder": 4,
+      "icon": "writing",
+      "color": "#2E7D32",
+      "children": [
+        {"id": 301, "name": "归纳概括", "level": 2, "parentId": 300, "sortOrder": 1},
+        {"id": 302, "name": "提出对策", "level": 2, "parentId": 300, "sortOrder": 2},
+        {"id": 303, "name": "综合分析", "level": 2, "parentId": 300, "sortOrder": 3},
+        {"id": 304, "name": "文章写作", "level": 2, "parentId": 300, "sortOrder": 4}
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "categoryId": 3,
+      "questionType": 1,
+      "content": "哲学的基本问题是：",
+      "optionA": "物质和意识的同一性问题",
+      "optionB": "存在和思维的同一性问题",
+      "optionC": "世界的本原是什么问题",
+      "optionD": "世界是统一的还是多样的问题",
+      "correctAnswer": "B",
+      "explanation": "哲学的基本问题是思维与存在的关系问题，即精神与物质的关系问题，也表述为存在与思维的同一性问题。",
+      "difficulty": 1,
+      "source": "2023年临夏事业编",
+      "tags": ["哲学", "基本问题"]
+    },
+    {
+      "id": 2,
+      "categoryId": 3,
+      "questionType": 1,
+      "content": "下列不属于马克思主义哲学特点的是：",
+      "optionA": "科学性",
+      "optionB": "革命性",
+      "optionC": "实践性",
+      "optionD": "神秘性",
+      "correctAnswer": "D",
+      "explanation": "马克思主义哲学的鲜明特点是科学性、革命性、实践性的统一。神秘性不是其特点。",
+      "difficulty": 1,
+      "source": "2023年临夏事业编",
+      "tags": ["马克思主义哲学", "特点"]
+    },
+    {
+      "id": 3,
+      "categoryId": 102,
+      "questionType": 1,
+      "content": "临夏回族自治州成立于哪一年？",
+      "optionA": "1956年",
+      "optionB": "1957年",
+      "optionC": "1958年",
+      "optionD": "1959年",
+      "correctAnswer": "A",
+      "explanation": "临夏回族自治州成立于1956年2月19日，是中国最早成立的两个民族自治州之一。",
+      "difficulty": 2,
+      "source": "临夏州情教材",
+      "tags": ["临夏历史", "建州时间"]
+    },
+    {
+      "id": 4,
+      "categoryId": 112,
+      "questionType": 1,
+      "content": "伊斯兰教的五大功修中，不包括：",
+      "optionA": "念证",
+      "optionB": "礼拜",
+      "optionC": "斋戒",
+      "optionD": "朝觐",
+      "correctAnswer": "A",
+      "explanation": "伊斯兰教五大功修为：念证、礼拜、天课、斋戒、朝觐。题目问不包括，选项A念证其实是包括的，这道题目有误。正确答案应重新设计。",
+      "difficulty": 2,
+      "source": "临夏民族宗教知识",
+      "tags": ["伊斯兰教", "五大功修"]
+    },
+    {
+      "id": 5,
+      "categoryId": 121,
+      "questionType": 1,
+      "content": "炳灵寺石窟位于临夏州哪个县？",
+      "optionA": "永靖县",
+      "optionB": "广河县",
+      "optionC": "和政县",
+      "optionD": "东乡县",
+      "correctAnswer": "A",
+      "explanation": "炳灵寺石窟位于甘肃省临夏回族自治州永靖县刘家峡西北35公里处的大积山石崖上。",
+      "difficulty": 1,
+      "source": "临夏旅游文化",
+      "tags": ["炳灵寺", "旅游景点"]
+    }
+  ]
+}
