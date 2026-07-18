@@ -1,7 +1,7 @@
 package com.linxia.exam.presentation.ui.screen.home
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.*
@@ -19,7 +19,11 @@ import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.CategoryViewModel
 import com.linxia.exam.presentation.viewmodel.ProgressViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.NavController
+import androidx.navigation.NavController
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import com.linxia.exam.domain.repository.CategoryRepository
 import androidx.navigation.compose.rememberNavController
 
 @Composable

@@ -8,6 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.background
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 
 @Composable
@@ -109,7 +112,7 @@ fun CategoryCard(
                     fontWeight = FontWeight.Medium,
                     fontSize = 16.sp,
                     maxLines = 1,
-                    overflow = androidx.compose.ui.text.overflow.TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
@@ -304,4 +307,15 @@ fun getCategoryIcon(iconName: String): androidx.compose.ui.graphics.vector.Image
         "livelihood" -> Icons.Default.Home
         else -> Icons.Default.Quiz
     }
+}
+
+@Composable
+fun SingleLineScrollRow(
+    modifier: Modifier = Modifier,
+    content: @Composable RowScope.() -> Unit
+) {
+    Row(
+        modifier = modifier.horizontalScroll(rememberScrollState()),
+        content = content
+    )
 }

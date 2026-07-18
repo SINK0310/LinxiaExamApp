@@ -14,6 +14,9 @@ import com.linxia.exam.data.db.entity.Question
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.PracticeViewModel
 import com.linxia.exam.presentation.viewmodel.QuestionViewModel
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -306,7 +309,7 @@ fun ResultScreen(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                FilledButton(onClick = onRetry, modifier = Modifier.fillMaxWidth().height(56.dp)) {
+                Button(onClick = onRetry, modifier = Modifier.fillMaxWidth().height(56.dp)) {
                     Text("重新练习", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 }
                 OutlinedButton(onClick = onReviewWrong, modifier = Modifier.fillMaxWidth().height(56.dp)) {

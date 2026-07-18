@@ -14,6 +14,10 @@ import com.linxia.exam.data.db.entity.Category
 import com.linxia.exam.presentation.ui.components.CategoryCard
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.CategoryViewModel
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextAlign
+import com.linxia.exam.domain.repository.CategoryRepository
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -36,7 +40,7 @@ fun CategoryScreen(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(currentCategory?.name ?: "全部分类", fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.overflow.TextOverflow.Ellipsis) },
+                    title = { Text(currentCategory?.name ?: "全部分类", fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis) },
                     navigationIcon = {
                         IconButton(onClick = { /* navigate back */ }) {
                             Icon(Icons.Default.ArrowBack, contentDescription = "返回")
@@ -131,7 +135,7 @@ fun LeafCategoryScreen(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            FilledButton(
+            Button(
                 onClick = { onNavigateToPractice(category.id) },
                 modifier = Modifier.fillMaxWidth().height(56.dp)
             ) {

@@ -16,6 +16,9 @@ import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.ExamViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import java.text.SimpleDateFormat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import java.util.*
 
 @Composable
@@ -247,7 +250,7 @@ fun ExamRunningView(
         Spacer(modifier = Modifier.height(32.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             OutlinedButton(onClick = onCancel) { Text("放弃考试") }
-            FilledButton(onClick = onFinish) { Text("交卷") }
+            Button(onClick = onFinish) { Text("交卷") }
         }
     }
 }

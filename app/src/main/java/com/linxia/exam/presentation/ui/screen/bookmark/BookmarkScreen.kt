@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
@@ -143,7 +144,7 @@ fun BookmarkCard(
                     text = q.content,
                     fontSize = 14.sp,
                     maxLines = 2,
-                    overflow = androidx.compose.ui.text.overflow.TextOverflow.Ellipsis
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
                 )
                 if (bookmark.note.isNotBlank()) {
                     Spacer(modifier = Modifier.height(8.dp))

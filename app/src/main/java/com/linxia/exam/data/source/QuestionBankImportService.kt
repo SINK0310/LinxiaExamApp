@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
+import androidx.room.withTransaction
 import kotlinx.serialization.json.Json
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -113,27 +114,22 @@ class QuestionBankImportService : Service() {
         val db = AppDatabase.getInstance(this)
         val gson = Json { ignoreUnknownKeys = true }
 
-        withContext(Dispatchers.IO) {
-            db.runTransaction {
-                // 清空旧数据
+        val questionsCount = withContext(Dispatchers.IO) {
+            db.withTransaction {
                 db.questionDao().deleteAll()
                 db.categoryDao().deleteAll()
 
-                // 解析并插入分类
                 val categoriesData = gson.decodeFromString<List<Category>>(json)
                 db.categoryDao().insertAll(categoriesData)
 
-                // 解析并插入题目
                 val questionsData = gson.decodeFromString<List<Question>>(json)
                 db.questionDao().insertAll(questionsData)
-
-                // 更新题库版本
-                // db.questionBankVersionDao().insert(...)
+                questionsData.size
             }
         }
 
         showProgressNotification("导入完成", 100)
-        showCompleteNotification("成功导入 ${questionsData.size} 道题目")
+        showCompleteNotification("成功导入 $questionsCount 道题目")
         stopSelf()
     }
 

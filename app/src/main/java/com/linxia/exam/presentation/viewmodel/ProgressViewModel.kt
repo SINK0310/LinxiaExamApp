@@ -120,3 +120,7 @@ class ProgressViewModel @Inject constructor(
         return calendar.timeInMillis
     }
 }
+
+    fun getProgressForCategory(categoryId: Long): UserProgress? {
+        return null
+    }

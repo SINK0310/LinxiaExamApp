@@ -14,6 +14,13 @@ import com.linxia.exam.data.db.entity.PracticeRecord
 import com.linxia.exam.data.db.entity.UserProgress
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.ProgressViewModel
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.clickable
+import com.linxia.exam.data.db.entity.ExamRecord
+import com.linxia.exam.domain.repository.PracticeRecordRepository
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -47,7 +54,7 @@ fun ProgressScreen(modifier: Modifier = Modifier) {
                 TopAppBar(
                     title = { Text("学习进度", fontWeight = FontWeight.Bold) },
                     actions = {
-                        MenuAnchor { /* time range selector */ }
+                        TextButton(onClick = { /* time range selector */ }) { Text("时间范围") }
                     }
                 )
             }
@@ -379,8 +386,8 @@ fun RecentExamsSection(
 
 @Composable
 fun MostWrongQuestionsSection(
-    wrongQuestions: List<PracticeRepository.WrongQuestionStat>,
-    onItemClick: (PracticeRepository.WrongQuestionStat) -> Unit
+    wrongQuestions: List<PracticeRecordRepository.WrongQuestionStat>,
+    onItemClick: (PracticeRecordRepository.WrongQuestionStat) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -400,7 +407,7 @@ fun MostWrongQuestionsSection(
 }
 
 @Composable
-fun MostWrongItem(stat: PracticeRepository.WrongQuestionStat, onClick: () -> Unit) {
+fun MostWrongItem(stat: PracticeRecordRepository.WrongQuestionStat, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()

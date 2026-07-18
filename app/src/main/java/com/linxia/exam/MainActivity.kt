@@ -28,6 +28,11 @@ import com.linxia.exam.presentation.viewmodel.ProgressViewModel
 import com.linxia.exam.presentation.viewmodel.QuestionViewModel
 import com.linxia.exam.presentation.viewmodel.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Box
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import androidx.navigation.getLong
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -165,7 +170,7 @@ fun AppNavHost(
 
         composable("exam_running") {
             // Exam running screen
-            androidx.compose.material3.Box(
+            Box(
                 modifier = androidx.compose.ui.Modifier.fillMaxSize(),
                 contentAlignment = androidx.compose.ui.Alignment.Center
             ) {

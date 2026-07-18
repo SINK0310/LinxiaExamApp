@@ -3,6 +3,7 @@ package com.linxia.exam.data.repository
 import com.linxia.exam.data.db.dao.CategoryDao
 import com.linxia.exam.data.db.entity.Category
 import com.linxia.exam.domain.repository.CategoryRepository
+import com.linxia.exam.domain.repository.CategoryRepository.CategoryWithChildren
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
