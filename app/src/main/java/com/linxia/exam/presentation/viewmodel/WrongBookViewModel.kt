@@ -36,14 +36,14 @@ class WrongBookViewModel @Inject constructor(
     val masteredQuestions: Flow<List<WrongQuestion>> = wrongQuestionRepository.getByStatus(1L, 2)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val filteredQuestions: Flow<List<WrongQuestion>> = combine(_filterStatus, _filterCategory) { status, categoryId ->
+    val filteredQuestions: Flow<List<WrongQuestion>> = combine(_filterStatus, _filterCategory) { status, _ ->
         when (status) {
             FilterStatus.ALL -> allWrongQuestions
             FilterStatus.UNMASTERED -> unmasteredQuestions
             FilterStatus.REVIEWING -> reviewingQuestions
             FilterStatus.MASTERED -> masteredQuestions
         }
-    }.flattenMerge()
+    }.flatMapLatest { it }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val totalCount: Flow<Int> = flow { emit(wrongQuestionRepository.getTotalCount(1L)) }
