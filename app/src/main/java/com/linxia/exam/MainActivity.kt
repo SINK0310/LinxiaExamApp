@@ -1,6 +1,7 @@
 package com.linxia.exam
 
 import android.os.Bundle
+import com.google.gson.Gson
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels

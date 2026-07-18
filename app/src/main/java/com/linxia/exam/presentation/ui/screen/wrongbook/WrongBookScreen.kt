@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
+import com.google.gson.Gson
 import androidx.compose.ui.unit.sp
 import com.linxia.exam.data.db.entity.WrongQuestion
 import com.linxia.exam.domain.repository.WrongQuestionRepository

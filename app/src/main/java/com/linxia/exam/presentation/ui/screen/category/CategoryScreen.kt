@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.gson.Gson
 import androidx.compose.ui.unit.sp
 import com.linxia.exam.data.db.entity.Category
 import com.linxia.exam.presentation.ui.components.CategoryCard

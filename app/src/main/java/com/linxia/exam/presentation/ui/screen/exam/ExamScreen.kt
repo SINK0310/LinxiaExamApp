@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import com.google.gson.Gson
 import androidx.compose.ui.unit.sp
 import com.linxia.exam.data.db.entity.ExamRecord
 import com.linxia.exam.domain.repository.CategoryRepository

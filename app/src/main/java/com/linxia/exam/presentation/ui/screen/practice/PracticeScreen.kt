@@ -16,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.gson.Gson
 import androidx.compose.ui.unit.sp
 import com.linxia.exam.data.db.entity.Question
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
