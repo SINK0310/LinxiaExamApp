@@ -10,6 +10,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.launch
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.serializer
 import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 
@@ -87,7 +89,7 @@ class ExamViewModel @Inject constructor(
         val record = ExamRecord(
             userId = 1,
             examType = _examType.value.ordinal + 1,
-            categoryIds = kotlinx.serialization.json.Json.encodeToString(_selectedCategories.value),
+            categoryIds = kotlinx.serialization.json.Json.encodeToString(ListSerializer(Long.serializer()), _selectedCategories.value),
             totalQuestions = totalQuestions,
             correctCount = correctCount,
             wrongCount = wrongCount,
@@ -95,8 +97,8 @@ class ExamViewModel @Inject constructor(
             timeSpent = timeSpent,
             startTime = _examStartTime.value,
             endTime = endTime,
-            questionIds = kotlinx.serialization.json.Json.encodeToString(questionIds),
-            userAnswers = kotlinx.serialization.json.Json.encodeToString(userAnswers)
+            questionIds = kotlinx.serialization.json.Json.encodeToString(ListSerializer(Long.serializer()), questionIds),
+            userAnswers = kotlinx.serialization.json.Json.encodeToString(kotlinx.serialization.builtins.MapSerializer(Long.serializer(), String.serializer()), userAnswers)
         )
         examRepository.insert(record)
     }
