@@ -14,6 +14,11 @@ import com.linxia.exam.data.db.entity.WrongQuestion
 import com.linxia.exam.domain.repository.WrongQuestionRepository
 import com.linxia.exam.presentation.ui.theme.LinxiaTheme
 import com.linxia.exam.presentation.viewmodel.WrongBookViewModel
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.foundation.clickable
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -112,7 +117,7 @@ fun FilterChips(
     currentCategoryId: Long,
     onCategoryChange: (Long) -> Unit
 ) {
-    SingleLineScrollView(
+    SingleLineScrollRow(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Row(
@@ -189,7 +194,7 @@ fun WrongQuestionItem(
                         }
                     }
                     Column {
-                        Text(question?.content ?: "题目已删除", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Medium, maxLines = 1, overflow = androidx.compose.ui.text.overflow.TextOverflow.Ellipsis)
+                        Text(question?.content ?: "题目已删除", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Medium, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         if (category != null) {
                             Text(category.name, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
@@ -219,7 +224,7 @@ fun WrongQuestionItem(
                         OutlinedButton(onClick = onMarkReviewing, modifier = Modifier.weight(1f)) {
                             Text("标记复习中", style = MaterialTheme.typography.labelSmall)
                         }
-                        FilledButton(onClick = onMarkMastered, modifier = Modifier.weight(1f)) {
+                        Button(onClick = onMarkMastered, modifier = Modifier.weight(1f)) {
                             Text("标记掌握", style = MaterialTheme.typography.labelSmall)
                         }
                     }
