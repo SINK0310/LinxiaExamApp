@@ -90,17 +90,17 @@ interface QuestionDao {
         )
         var category: com.linxia.exam.data.db.entity.Category?
     )
-}
-
     @Query("SELECT COUNT(*) FROM questions")
     suspend fun getTotalCount(): Int
-
     @Query("SELECT * FROM questions ORDER BY RANDOM() LIMIT :limit")
     suspend fun getRandomQuestions(limit: Int): List<Question>
-
     @Query("UPDATE questions SET is_collected = :collected WHERE id = :id")
     suspend fun setCollected(id: Long, collected: Int)
-
+    @Query("UPDATE questions SET is_wrong = :wrong WHERE id = :id")
+    suspend fun setWrong(id: Long, wrong: Int)
+    @Query("UPDATE questions SET is_collected = 0, is_wrong = 0")
+    suspend fun clearAllFlags()
+}
     @Query("UPDATE questions SET is_wrong = :wrong WHERE id = :id")
     suspend fun setWrong(id: Long, wrong: Int)
 

@@ -90,7 +90,7 @@ class QuestionRepositoryImpl @Inject constructor(
         questionDao.clearAllFlags()
     }
 
-    override data class QuestionWithCategory(
+    data class QuestionWithCategory(
         var question: Question,
         var category: Category?
     )
